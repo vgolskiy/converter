@@ -7,16 +7,16 @@ def read_file_to_table(path, filename, extension):
         try:
             data = pd.read_csv(path, encoding="ISO-8859-1")
         except:
-            print("Unsupported file encoding\n")
+            print("Unsupported file encoding", file=sys.stderr)
             return
     elif extension == '.prn':
         try:
             data = pd.read_fwf(path, encoding="ISO-8859-1")
         except:
-            print("Unsupported file encoding\n")
+            print("Unsupported file encoding", file=sys.stderr)
             return
     else:
-        print("Wrong file type: .csv or .prn are accepted only\n")
+        print("Wrong file type: .csv or .prn are accepted only")
         return
     data.to_html(filename + ".html")
     print("Converted to HTML: " + filename + ".html was created")
@@ -25,7 +25,7 @@ def read_file_to_table(path, filename, extension):
 # path = sys.argv[1]
 path = "dat.csv"
 if not os.path.isfile(path):
-    print("Wrong file path provided\n")
+    print("Wrong file path provided", file=sys.stderr)
 else:
     filename, extension = os.path.splitext(path)
     read_file_to_table(path, filename, extension)
