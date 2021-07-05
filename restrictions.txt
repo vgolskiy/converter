@@ -1,4 +1,9 @@
+To convert file please run command (converted file will appear near the original one):
+    make run FILE=<full path to file>
+
 Restrictions:
 - .csv and .prn files are accepted
 - encoding ISO-8859-1 is used
 - file should contain columns' names
+- file size is limited by RAM and operating system restrictions on files
+- to preserve data from corruption no data conversion is performed
