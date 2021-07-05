@@ -1,4 +1,4 @@
-To convert file please run command (converted file will appear near the original one):
+To convert file please run command (converted file will be created near the original one):
     make run FILE=<full path to file>
 
 Restrictions:
