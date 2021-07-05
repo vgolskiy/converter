@@ -1,16 +1,31 @@
-# This is a sample Python script.
+import sys
+import os.path
+import pandas as pd
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+def read_file_to_table(path, filename, extension):
+    if extension == '.csv':
+        try:
+            data = pd.read_csv(path, encoding="ISO-8859-1")
+        except:
+            print("Unsupported file encoding\n")
+            return
+    elif extension == '.prn':
+        try:
+            data = pd.read_fwf(path, encoding="ISO-8859-1")
+        except:
+            print("Unsupported file encoding\n")
+            return
+    else:
+        print("Wrong file type: .csv or .prn are accepted only\n")
+        return
+    data.to_html(filename + ".html")
+    print("Converted to HTML: " + filename + ".html was created")
+    return
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# path = sys.argv[1]
+path = "dat.csv"
+if not os.path.isfile(path):
+    print("Wrong file path provided\n")
+else:
+    filename, extension = os.path.splitext(path)
+    read_file_to_table(path, filename, extension)

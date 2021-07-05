@@ -1,0 +1,4 @@
+Restrictions:
+- .csv and .prn files are accepted
+- encoding ISO-8859-1 is used
+- file should contain columns' names
